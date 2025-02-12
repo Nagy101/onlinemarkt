@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import React, { useContext, useState } from "react";
 import { CartContaxt } from "../../Context/CartContext";
 import toast from "react-hot-toast";
-import "./CheckOut.css"; 
+import "./CheckOut.css";
 
 export default function CheckOut() {
   const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ export default function CheckOut() {
     setLoading(true);
     try {
       let { data } = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://nagy101.github.io/Fresh-Cart/`,
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://nagy101.github.io/onlinemarkt/`,
         { shippingAddress },
         {
           headers: {
