@@ -2,34 +2,41 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React, { useContext, useState } from "react";
-import { CartContaxt } from "../../Context/CartContext";
+import { CartContext } from "../../Context/CartContext"; // Fixed typo
 import toast from "react-hot-toast";
 import "./CheckOut.css";
 
 export default function CheckOut() {
   const [loading, setLoading] = useState(false);
-  let { cart } = useContext(CartContaxt);
+  let { cart } = useContext(CartContext);
 
   async function checkOut(shippingAddress) {
+    if (!cart?.cartId) {
+      toast.error("Cart is empty!");
+      return;
+    }
+
+    const token = localStorage.getItem("userToken");
+    if (!token) {
+      toast.error("User not authenticated!");
+      return;
+    }
+
     setLoading(true);
     try {
       let { data } = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https:https://nagy101.github.io/onlinemarkt/`,
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://nagy101.github.io/onlinemarkt/`,
         { shippingAddress },
         {
-          headers: {
-            token: localStorage.getItem("userToken"),
-          },
+          headers: { token },
         }
       );
 
       toast.success("Order Placed Successfully!");
-      setLoading(false);
-      // window.location.href = data.session.url;
-      console.log(data);
-      
+      window.location.href = data.session.url;
     } catch (error) {
       toast.error("Checkout Failed!");
+    } finally {
       setLoading(false);
     }
   }
@@ -40,7 +47,7 @@ export default function CheckOut() {
       address: "",
       phone: "",
     },
-    onSubmit: checkOut,
+    onSubmit: (values) => checkOut(values), // Fixed function call
   });
 
   return (
