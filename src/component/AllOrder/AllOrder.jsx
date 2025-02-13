@@ -17,7 +17,6 @@ export default function AllOrder() {
       );
       if (Array.isArray(data)) {
         setOrders(data);
-        console.log(data);
       } else {
         console.error("Unexpected API response format:", data);
       }
@@ -86,7 +85,6 @@ export default function AllOrder() {
                     )}
                   </div>
 
-                  {/* Order Details */}
                   <div className="border-t border-gray-200 mt-4 pt-4 flex justify-between text-gray-700 dark:text-gray-300">
                     <h3 className="font-semibold">
                       💵 Total: {order.totalOrderPrice} EGP
