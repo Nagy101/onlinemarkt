@@ -5,11 +5,12 @@ import React, { useContext, useState } from "react";
 import { CartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
 import "./CheckOut.css";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckOut() {
   const [loading, setLoading] = useState(false);
   let { cart } = useContext(CartContext);
-
+  let navigate = useNavigate();
   async function checkOut(shippingAddress) {
     if (!cart?.cartId) {
       toast.error("Cart is empty!");
@@ -34,6 +35,7 @@ export default function CheckOut() {
 
       toast.success("Order Placed Successfully!");
       window.location.href = data.session.url;
+      navigate('/allorders');
     } catch (error) {
       toast.error("Checkout Failed!");
     } finally {
