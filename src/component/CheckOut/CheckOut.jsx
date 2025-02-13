@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React, { useContext, useState } from "react";
-import { CartContext } from "../../Context/CartContext"; // Fixed typo
+import { CartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
 import "./CheckOut.css";
 
@@ -25,7 +25,7 @@ export default function CheckOut() {
     setLoading(true);
     try {
       let { data } = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://nagy101.github.io/onlinemarkt/`,
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://nagy101.github.io/Fresh-Cart/allorders`,
         { shippingAddress },
         {
           headers: { token },
@@ -47,7 +47,7 @@ export default function CheckOut() {
       address: "",
       phone: "",
     },
-    onSubmit: (values) => checkOut(values), // Fixed function call
+    onSubmit: (values) => checkOut(values),
   });
 
   return (
