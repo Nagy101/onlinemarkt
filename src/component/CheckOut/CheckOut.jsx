@@ -25,7 +25,9 @@ export default function CheckOut() {
 
       toast.success("Order Placed Successfully!");
       setLoading(false);
-      window.location.href = data.session.url;
+      // window.location.href = data.session.url;
+      console.log(data);
+      
     } catch (error) {
       toast.error("Checkout Failed!");
       setLoading(false);
