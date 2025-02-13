@@ -25,7 +25,7 @@ export default function CheckOut() {
     setLoading(true);
     try {
       let { data } = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://nagy101.github.io/Fresh-Cart/allorders`,
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://nagy101.github.io/onlinemarkt/`,
         { shippingAddress },
         {
           headers: { token },
