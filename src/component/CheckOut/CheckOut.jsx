@@ -14,7 +14,7 @@ export default function CheckOut() {
     setLoading(true);
     try {
       let { data } = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://nagy101.github.io/onlinemarkt/#/allorders`,
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https:https://nagy101.github.io/onlinemarkt/`,
         { shippingAddress },
         {
           headers: {
@@ -26,8 +26,6 @@ export default function CheckOut() {
       toast.success("Order Placed Successfully!");
       setLoading(false);
       window.location.href = data.session.url;
-      console.log(data.session.url);
-      
     } catch (error) {
       toast.error("Checkout Failed!");
       setLoading(false);
