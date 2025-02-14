@@ -2,14 +2,15 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React, { useContext, useState } from "react";
-import { CartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
 import "./CheckOut.css";
 import { useNavigate } from "react-router-dom";
+import { CartContaxt } from "../../Context/CartContext";
+
 
 export default function CheckOut() {
   const [loading, setLoading] = useState(false);
-  let { cart } = useContext(CartContext);
+  let { cart } = useContext(CartContaxt);
   let navigate = useNavigate();
   async function checkOut(shippingAddress) {
     if (!cart?.cartId) {
@@ -33,7 +34,7 @@ export default function CheckOut() {
         },
         {
           params: {
-            url: "https://nagy101.github.io/onlinemarkt/#/",
+            url: "https://nagy101.github.io/onlinemarkt/#",
           },
         }
       );
