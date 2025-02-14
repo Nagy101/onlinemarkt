@@ -26,10 +26,15 @@ export default function CheckOut() {
     setLoading(true);
     try {
       let { data } = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://nagy101.github.io/onlinemarkt/`,
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?`,
         { shippingAddress },
         {
           headers: { token },
+        },
+        {
+          params:{
+            url:"https://nagy101.github.io/onlinemarkt/#/"
+          }
         }
       );
 
