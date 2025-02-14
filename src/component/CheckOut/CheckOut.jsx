@@ -32,9 +32,9 @@ export default function CheckOut() {
           headers: { token },
         },
         {
-          params:{
-            url:"https://nagy101.github.io/onlinemarkt/#/"
-          }
+          params: {
+            url: "https://nagy101.github.io/onlinemarkt/#/",
+          },
         }
       );
 
