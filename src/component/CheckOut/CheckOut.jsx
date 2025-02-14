@@ -35,6 +35,7 @@ export default function CheckOut() {
         {
           params: {
             url: "https://nagy101.github.io/onlinemarkt/#",
+            
           },
         }
       );
@@ -67,7 +68,7 @@ export default function CheckOut() {
       <form onSubmit={formik.handleSubmit} className="checkout-form">
         <div className="input-group">
           <label htmlFor="city">
-            <i className="fas fa-city"></i> City
+            <i className="fas fa-city"></i> City Address
           </label>
           <input
             type="text"
